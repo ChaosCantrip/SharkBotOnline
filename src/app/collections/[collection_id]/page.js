@@ -1,9 +1,10 @@
 import article from "@styles/article.module.css";
 
-export default function HomePage() {
+export default async function CollectionPage({ params }) {
+    const collection_id = params.collection_id;
     return (
         <div className={article.wrapper}>
-            <h1 className={article.title}>Home Page</h1>
+            <h1 className={article.title}>Collection: {collection_id}</h1>
             <div className={article.body}>
                 <p>Some content idk</p>
             </div>

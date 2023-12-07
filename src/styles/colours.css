@@ -1,0 +1,14 @@
+:root {
+    --blurple: #7289DA;
+    --core-grey: #37393F;
+    --embed-grey: #2F3136;
+    --dark-grey: #2d2d31;
+    --darker-grey: #212225;
+    --greyple: #DCDDDE;
+    --green: #2ecc71;
+    --red: #e74c3c;
+}
+
+body {
+    color: var(--greyple);
+}
