@@ -1,0 +1,149 @@
+.item_id {
+    float: right;
+}
+
+.item_description {
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.main {
+    flex: 1 0 auto;
+}
+
+.embed {
+    flex-shrink: 0;
+    background: var(--embed-grey);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+}
+
+.embed_top_wrapper {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.embed_name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.item_icon {
+    width: 8rem;
+    aspect-ratio: 1 / 1;
+}
+
+.embed_values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 2px solid var(--darker-grey);
+    font-weight: bold;
+}
+
+.item_value {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--darker-grey);
+}
+
+.item_value:last-child, .item_value:nth-child(2) {
+    border-left: 2px solid var(--darker-grey);
+}
+
+.item_collection_wrapper {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item_collection {
+    padding: 1rem;
+    background: var(--blurple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    transition: transform 0.1s ease-in-out;
+    color: var(--greyple) !important;
+    border-radius: 1rem;
+}
+
+.item_collection:hover {
+    background: var(--greyple);
+    transform: scale(1.05);
+    color: var(--blurple) !important;
+}
+
+.item_collection_icon {
+    width: 2.5rem;
+    aspect-ratio: 1 / 1;
+}
+
+.green {
+    color: var(--green);
+}
+
+.red {
+    color: var(--red);
+}
+
+.found_in_wrapper {
+    margin-top: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background: var(--embed-grey);
+    border-radius: 1rem;
+}
+
+.found_in {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.found_in_item_wrapper {
+    padding: 0.5rem;
+    background: var(--blurple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: transform 0.1s ease-in-out;
+    color: var(--greyple) !important;
+    border-radius: 1rem;
+}
+
+.found_in_item_wrapper:hover {
+    background: var(--greyple);
+    transform: scale(1.05);
+    color: var(--blurple) !important;
+}
+
+.found_in_item_icon {
+    width: 1.5rem;
+    aspect-ratio: 1 / 1;
+}
+
+.not_found_in {
+    color: var(--red);
+    font-weight: bold;
+    padding: 1rem;
+}
