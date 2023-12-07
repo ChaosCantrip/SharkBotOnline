@@ -1,3 +1,4 @@
 .footer {
-    background: var(--greyple)
+    background: var(--greyple);
+    flex-shrink: 0;
 }
