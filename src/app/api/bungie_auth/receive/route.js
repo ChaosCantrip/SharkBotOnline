@@ -42,7 +42,12 @@ async function get_destiny_info(membership_id) {
         }
     })
 
+    const destiny_info = await destiny_info_response.json();
+
     if (!destiny_info_response.ok) {
+        if (destiny_info["ErrorStatus"] === "SystemDisabled") {
+            redirect("/bungie_auth/maintenance");
+        }
         redirect("/bungie_auth/failure");
     } else {
         return await destiny_info_response.json();
