@@ -1,8 +1,12 @@
+import article from "@styles/article.module.css";
 
 export default function HomePage() {
     return (
-        <div>
-            <h1>Home Page</h1>
+        <div className={article.wrapper}>
+            <h1 className={article.title}>Home Page</h1>
+            <div className={article.body}>
+                <p>Some content idk</p>
+            </div>
         </div>
     )
 }
