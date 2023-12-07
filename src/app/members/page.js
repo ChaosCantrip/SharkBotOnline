@@ -1,6 +1,6 @@
 import article from "@styles/article.module.css";
 
-export default function MembersPage() {
+export default async function MembersPage() {
     return (
         <div className={article.wrapper}>
             <h1 className={article.title}>Members Page</h1>
