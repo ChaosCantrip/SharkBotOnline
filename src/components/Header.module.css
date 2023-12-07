@@ -17,7 +17,6 @@
 .title {
     color: var(--blurple);
     font-size: 4rem;
-    font-weight: 700;
     text-shadow: 0.1rem 0.1rem 0 var(--greyple);
 }
 
