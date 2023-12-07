@@ -7,9 +7,11 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-            <Header />
-            {children}
-            <Footer />
+                <Header />
+                <main>
+                    {children}
+                </main>
+                <Footer />
             </body>
         </html>
     )
