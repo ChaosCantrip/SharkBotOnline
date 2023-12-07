@@ -6,3 +6,7 @@
     --darker-grey: #212225;
     --greyple: #DCDDDE;
 }
+
+body {
+    color: var(--greyple);
+}
