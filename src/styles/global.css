@@ -19,3 +19,12 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+a {
+    color: var(--blurple);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--greyple);
+}
