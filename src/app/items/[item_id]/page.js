@@ -5,6 +5,32 @@ import {notFound} from "next/navigation";
 import styles from "./item.module.css";
 import Link from "next/link";
 
+export async function generateMetadata({ params }) {
+    const item_id = params.item_id;
+    const item = await get_item(item_id);
+
+    if (!item) {
+        notFound();
+    }
+
+    return {
+        title: item.name,
+        description: item.description,
+        images: [
+            {
+                url: item.icon_url,
+                width: 256,
+                height: 256,
+                alt: item.name
+            }
+        ],
+        icons: {
+            icon: item.icon_url
+        }
+    }
+
+}
+
 export default async function ItemPage({ params }) {
     const item_id = params.item_id;
     const item = await get_item(item_id);
