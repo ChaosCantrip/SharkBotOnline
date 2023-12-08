@@ -1,7 +1,7 @@
 'use client' // Error components must be Client Components
 
 import article from '@styles/article.module.css';
-import styles from './ErrorTemplate.module.css';
+import styles from './error.module.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
