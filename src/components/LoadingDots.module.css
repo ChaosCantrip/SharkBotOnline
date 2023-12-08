@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    --anim-duration: 1s;
+}
+
+.dot {
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: dot_anim 1s ease-in-out infinite;
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: calc(var(--anim-duration) / 4);
+}
+
+.dot:nth-child(3) {
+    animation-delay: calc(var(--anim-duration) / 2);
+}
+
+.dot:nth-child(4) {
+    animation-delay: calc(var(--anim-duration) / 4 * 3);
+}
+
+@keyframes dot_anim {
+    0% {
+        transform: scale(1);
+        background: white;
+    }
+
+    12.5% {
+        transform: translateY(-1rem) scale(1.1);
+        background: var(--blurple);
+    }
+
+    25% {
+        transform: translateY(0.2rem) scale(0.95);
+    }
+
+    50% {
+        transform: translateY(0) scale(1);
+    }
+}
+
