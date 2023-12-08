@@ -1,0 +1,124 @@
+.wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.embed {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--embed-grey);
+}
+
+.embed > div:not(:last-child) {
+    border-bottom: 2px solid var(--darker-grey);
+}
+
+.embed .header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 1rem;
+}
+
+.embed .header .name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.embed .header .avatar {
+    width: 8rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 2rem;
+}
+
+.embed .header .id {
+    font-family: Consolas, monospace;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.main {
+    flex: 1 0 auto;
+}
+
+.progress {
+    height: 1rem;
+    background: var(--green);
+}
+
+.embed .values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-weight: bold;
+}
+
+.embed .values > * {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--darker-grey);
+}
+
+.embed .values > *:last-child {
+    border-bottom: none;
+}
+
+.embed .values > *:nth-child(2) {
+    border-left: 2px solid var(--darker-grey);
+}
+
+.embed .values > *:nth-child(4) {
+    border-left: 2px solid var(--darker-grey);
+}
+
+.embed .values .collection {
+    grid-column: 1 / 3;
+}
+
+.missions {
+    background: var(--embed-grey);
+    border-radius: 1rem;
+    text-align: center;
+    flex: 1;
+}
+
+.missions .title {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--darker-grey);
+}
+
+.missions .table {
+    display: flex;
+    flex-direction: column;
+}
+
+.missions .table .type .name {
+    font-weight: bold;
+    padding: 0.5rem;
+    border-bottom: 2px solid var(--darker-grey);
+}
+
+.missions .table .type .list {
+    display: flex;
+    flex-direction: column;
+}
+
+.missions .table .type .list .mission {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--darker-grey);
+}
+
+.missions .table .type .list .mission > * {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
