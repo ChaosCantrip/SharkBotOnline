@@ -1,0 +1,28 @@
+.link_wrapper {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.link {
+    color: var(--greyple);
+    padding: 1rem;
+    border-radius: 1rem;
+    background: var(--darker-grey);
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: var(--header-font);
+}
+
+.link:hover {
+    color: var(--blurple);
+    background: var(--dark-grey);
+}
+
+.link:active {
+    color: var(--blurple);
+    background: var(--darker-grey);
+}
