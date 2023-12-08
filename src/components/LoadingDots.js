@@ -7,7 +7,7 @@ export default function LoadingDots() {
             {
                 [...Array(num_dots)].map((_, i) => {
                     return (
-                        <div className={styles.dot}></div>
+                        <div className={styles.dot} key={i}></div>
                     )
                 })
             }
