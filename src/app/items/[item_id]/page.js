@@ -6,7 +6,7 @@ import styles from "./item.module.css";
 import Link from "next/link";
 
 export async function generateMetadata({ params }) {
-    const item_id = params.item_id;
+    const item_id = params.item_id.toUpperCase();
     const item = await get_item(item_id);
 
     if (!item) {
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ItemPage({ params }) {
-    const item_id = params.item_id;
+    const item_id = params.item_id.toUpperCase();
     const item = await get_item(item_id);
 
     if (!item) {
