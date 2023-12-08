@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExportableFileTemplateSettings">
+    <default_templates>
+      <template name="error.js.js" file-name="error" reformat="true" live-template-enabled="false" />
+      <template name="loading.js.js" file-name="loading" reformat="true" live-template-enabled="false" />
+      <template name="not-found.js.js" file-name="not-found" reformat="true" live-template-enabled="false" />
+    </default_templates>
+  </component>
+</project>
