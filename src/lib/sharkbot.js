@@ -27,6 +27,6 @@ export async function get_leaderboard(leaderboard_id) {
     return await get_doc('leaderboards', leaderboard_id);
 }
 
-export async function get_article(article_id) {
-    return await get_doc('articles', article_id);
+export async function get_post(post_id) {
+    return await get_doc('posts', post_id);
 }
