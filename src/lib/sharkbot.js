@@ -1,4 +1,4 @@
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
 async function get_doc(collection, document_id) {
@@ -9,6 +9,11 @@ async function get_doc(collection, document_id) {
   } else {
     return null;
   }
+}
+
+async function set_doc(collection, document_id, data) {
+  const docRef = doc(db, collection, document_id);
+  await setDoc(docRef, data);
 }
 
 export async function get_item(item_id) {
