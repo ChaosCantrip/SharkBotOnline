@@ -11,6 +11,12 @@
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+}
+
 .body {
     padding: 1rem;
 }
