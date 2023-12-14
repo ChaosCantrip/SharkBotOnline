@@ -5,6 +5,22 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 
 import styles from "./post.module.css";
 
+export async function generateMetadata({ params }) {
+    const post_id = params.post_id.toLowerCase();
+    const post = await get_post(post_id);
+
+    if (!post) {
+        notFound();
+    }
+
+    const short_body = post.body.split("\n")[0];
+
+    return {
+        title: post.title,
+        description: short_body,
+    }
+}
+
 export default async function PostPage({ params }) {
     const post_id = params.post_id.toLowerCase();
     const post = await get_post(post_id);
