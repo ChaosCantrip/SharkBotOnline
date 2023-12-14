@@ -1,10 +1,12 @@
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@lib/firebase";
+import { get_item } from "@lib/sharkbot";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
-    const { item_id } = params;
-    const doc_ref = doc(db, "items", item_id);
-    const item = await getDoc(doc_ref);
-    return NextResponse.json(item.data());
+    const item_id = params.item_id.toUpperCase();
+    const item = await get_item(item_id);
+    if (item) {
+        return NextResponse.json(item);
+    } else {
+        return NextResponse.json({ error: "Item not found" }, { status: 404 });
+    }
 }
