@@ -1,4 +1,4 @@
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, getDocs, collection } from 'firebase/firestore';
 import { db } from './firebase';
 
 async function get_doc(collection, document_id) {
@@ -9,6 +9,11 @@ async function get_doc(collection, document_id) {
   } else {
     return null;
   }
+}
+
+async function set_doc(collection, document_id, data) {
+  const docRef = doc(db, collection, document_id);
+  await setDoc(docRef, data);
 }
 
 export async function get_item(item_id) {
@@ -25,4 +30,21 @@ export async function get_member(member_id) {
 
 export async function get_leaderboard(leaderboard_id) {
     return await get_doc('leaderboards', leaderboard_id);
+}
+
+export async function get_post(post_id) {
+    return await get_doc('posts', post_id);
+}
+
+export async function set_post(post_id, data) {
+    return await set_doc('posts', post_id, data);
+}
+
+export async function get_all_posts() {
+    const posts = [];
+    const querySnapshot = await getDocs(collection(db, "posts"));
+    querySnapshot.forEach((doc) => {
+        posts.push(doc.data());
+    });
+    return posts;
 }

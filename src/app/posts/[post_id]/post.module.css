@@ -1,0 +1,62 @@
+.footnotes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    border-top: 1px solid var(--greyple);
+    color: var(--greyple);
+    font-size: 0.8rem;
+    font-style: italic;
+    padding: 1rem;
+}
+
+.markdown_wrapper h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--greyple);
+    border-bottom: 1px solid var(--greyple);
+    padding-bottom: 0.2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.markdown_wrapper h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--greyple);
+    border-bottom: 1px solid var(--greyple);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-inline: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.markdown_wrapper p {
+    font-size: 1rem;
+    padding-inline: 1rem;
+    line-height: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.markdown_wrapper br {
+    display: block;
+    content: "";
+    margin: 1rem;
+}
+
+.markdown_wrapper blockquote {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-left: 0.5rem solid var(--blurple);
+    padding: 1rem 1rem 1rem 2rem;
+    background: var(--embed-grey);
+}
+
+.markdown_wrapper blockquote p {
+    margin: 0;
+    padding: 0;
+}

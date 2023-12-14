@@ -22,6 +22,13 @@ main {
     margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+    main {
+        width: 100%;
+        padding-inline: 1rem;
+    }
+}
+
 a {
     color: var(--blurple);
     text-decoration: none;
