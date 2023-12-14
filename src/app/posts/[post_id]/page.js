@@ -17,7 +17,9 @@ export default async function PostPage({ params }) {
         <div className={article.wrapper}>
             <h1 className={article.title}>{post.title}</h1>
             <div className={article.body}>
-                <MDXRemote source={post.body} />
+                <div className={styles.markdown_wrapper}>
+                    <MDXRemote source={post.body} />
+                </div>
             </div>
             <div className={styles.footnotes}>
                 <p>{post.author.name}</p>
