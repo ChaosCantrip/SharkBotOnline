@@ -1,0 +1,12 @@
+.footnotes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    border-top: 1px solid var(--greyple);
+    color: var(--greyple);
+    font-size: 0.8rem;
+    font-style: italic;
+    padding: 1rem;
+}
