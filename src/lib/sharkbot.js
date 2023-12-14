@@ -35,3 +35,7 @@ export async function get_leaderboard(leaderboard_id) {
 export async function get_post(post_id) {
     return await get_doc('posts', post_id);
 }
+
+export async function set_post(post_id, data) {
+    return await set_doc('posts', post_id, data);
+}
