@@ -29,6 +29,18 @@ export async function get_all_items() {
     return items;
 }
 
+export async function get_all_items_lite() {
+    const items_dict = await get_doc("lite", "items");
+    const items = [];
+    for (const item_id in items_dict) {
+        items.push(items_dict[item_id]);
+    }
+    items.sort((a, b) => {
+        return a.index - b.index;
+    });
+    return items;
+}
+
 export async function get_collection(collection_id) {
     return await get_doc('collections', collection_id);
 }
