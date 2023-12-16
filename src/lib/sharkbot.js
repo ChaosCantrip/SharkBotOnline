@@ -33,6 +33,15 @@ export async function get_collection(collection_id) {
     return await get_doc('collections', collection_id);
 }
 
+export async function get_all_collections() {
+    const collections = [];
+    const querySnapshot = await getDocs(collection(db, "collections"));
+    querySnapshot.forEach((doc) => {
+        collections.push(doc.data());
+    });
+    return collections;
+}
+
 export async function get_member(member_id) {
     return await get_doc('members', member_id);
 }
