@@ -1,7 +1,7 @@
-export default function SearchBar(/* { setSearch } */) {
+export default function SearchBar({ setSearch }) {
     return (
         <div>
-            Search Bar
+            <input type="text" onChange={(e) => setSearch(e.target.value)} />
         </div>
     )
 }
