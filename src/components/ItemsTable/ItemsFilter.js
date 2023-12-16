@@ -21,7 +21,7 @@ export default function ItemsFilter({ items, setResults, search_bar, filter_opti
     return (
         <div>
             {search_bar && <SearchBar setSearch={setSearch} />}
-            {filter_options && <FilterOptions setFilter={setFilter} />}
+            {/* filter_options && <FilterOptions setFilter={setFilter} /> */}
         </div>
     )
 }
