@@ -1,4 +1,4 @@
-export default function ItemsFilter(/* { setResults, search_bar, filter_options } */) {
+export default function ItemsFilter(/* { items, setResults, search_bar, filter_options } */) {
     return (
         <div>
             Items Filter
