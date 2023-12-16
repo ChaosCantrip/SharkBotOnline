@@ -20,6 +20,15 @@ export async function get_item(item_id) {
     return await get_doc('items', item_id);
 }
 
+export async function get_all_items() {
+    const items = [];
+    const querySnapshot = await getDocs(collection(db, "items"));
+    querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+    });
+    return items;
+}
+
 export async function get_collection(collection_id) {
     return await get_doc('collections', collection_id);
 }
