@@ -10,7 +10,8 @@ export async function GET(request) {
             name: item.name,
             description: item.description,
             type: item.type,
-            collection: item.collection.id
+            collection: item.collection.id,
+            index: item.index
         });
     }
     return SharkResponse({items: items_lite});
