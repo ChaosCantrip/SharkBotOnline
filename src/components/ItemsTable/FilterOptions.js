@@ -1,4 +1,4 @@
-export default function FilterOptions(/* { setFilter } */) {
+export default function FilterOptions({ setFilter }) {
     return (
         <div>
             Filter Options
