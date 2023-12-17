@@ -12,10 +12,7 @@ export async function GET(request, { params }) {
 }
 
 
-const required_fields = ["title", "body", "author"];
-const required_sub_fields = {
-    "author": ["name"]
-}
+const required_fields = ["title", "content", "author"];
 
 export async function POST(request, { params }) {
     const post_id = params.post_id.toLowerCase();
@@ -48,24 +45,13 @@ export async function POST(request, { params }) {
         }
     }
 
-    for (const field of Object.keys(required_sub_fields)) {
-        const sub_fields = required_sub_fields[field];
-        for (const sub_field of sub_fields) {
-            if (!post_data[field][sub_field]) {
-                return SharkResponse({ error: `Missing required sub-field: ${field}.${sub_field}` }, 400);
-            }
-        }
-    }
-
     const timestamp = Date.now();
 
     const new_post = {
         id: post_id,
         title: post_data.title,
-        body: post_data.body,
-        author: {
-            name: post_data.author.name
-        },
+        content: post_data.content,
+        author: post_data.author,
         created_at: post_exists ? post.created_at : timestamp,
         updated_at: timestamp
     };

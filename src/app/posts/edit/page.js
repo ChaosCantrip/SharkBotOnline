@@ -14,10 +14,8 @@ export default async function PostEditPage(){
         let post_data = {
             "id": formDataObject.post_id,
             "title": formDataObject.post_title,
-            "body": formDataObject.post_body,
-            "author": {
-                "name": formDataObject.post_author_name
-            },
+            "content": formDataObject.post_body,
+            "author": formDataObject.post_author_name,
             "update": true,
         }
         let post_json = JSON.stringify(post_data);

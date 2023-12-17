@@ -13,11 +13,11 @@ export async function generateMetadata({ params }) {
         notFound();
     }
 
-    const short_body = post.body.split("\n")[0];
+    const short_content = post.content.split("\n")[0];
 
     return {
         title: post.title,
-        description: short_body,
+        description: short_content,
     }
 }
 
@@ -34,11 +34,11 @@ export default async function PostPage({ params }) {
             <h1 className={article.title}>{post.title}</h1>
             <div className={article.body}>
                 <div className={styles.markdown_wrapper}>
-                    <MDXRemote source={post.body} />
+                    <MDXRemote source={post.content} />
                 </div>
             </div>
             <div className={styles.footnotes}>
-                <p>{post.author.name}</p>
+                <p>{post.author}</p>
                 <p>{new Date(post.created_at).toString()}</p>
                 <p>{post.id}</p>
             </div>
