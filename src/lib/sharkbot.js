@@ -2,6 +2,7 @@ import { sql } from "@vercel/postgres";
 import { cache } from "react";
 
 export const get_item = cache(async (item_id) => {
+    console.log(`DB READ | get_item | item_id: ${item_id}`)
     const item = await sql`SELECT * FROM items WHERE id = ${item_id}`;
     if (item.rowCount === 0) {
         return null;
@@ -11,11 +12,13 @@ export const get_item = cache(async (item_id) => {
 });
 
 export const get_all_items = cache(async () => {
+    console.log(`DB READ | get_all_items`)
     const items = await sql`SELECT * FROM items`;
     return items.rows;
 });
 
 export const get_collection = cache(async (collection_id) => {
+    console.log(`DB READ | get_collection | collection_id: ${collection_id}`)
     const collection = await sql`SELECT * FROM collections WHERE id = ${collection_id}`;
     if (collection.rowCount === 0) {
         return null;
@@ -25,16 +28,19 @@ export const get_collection = cache(async (collection_id) => {
 });
 
 export const get_collection_items = cache(async (collection_id) => {
+    console.log(`DB READ | get_collection_items | collection_id: ${collection_id}`)
     const items = await sql`SELECT * FROM items WHERE collection_id = ${collection_id}`;
     return items.rows;
 });
 
 export const get_all_collections = cache(async () => {
+    console.log(`DB READ | get_all_collections`)
     const collections = await sql`SELECT * FROM collections`;
     return collections.rows;
 });
 
 export const get_member = cache(async (member_id) => {
+    console.log(`DB READ | get_member | member_id: ${member_id}`)
     const member = await sql`SELECT * FROM members WHERE id = ${member_id}`;
     if (member.rowCount === 0) {
         return null;
@@ -44,6 +50,7 @@ export const get_member = cache(async (member_id) => {
 });
 
 export const get_leaderboard = cache(async (leaderboard_id) => {
+    console.log(`DB READ | get_leaderboard | leaderboard_id: ${leaderboard_id}`)
     const leaderboard = await sql`SELECT * FROM leaderboards WHERE id = ${leaderboard_id}`;
     if (leaderboard.rowCount === 0) {
         return null;
@@ -53,6 +60,7 @@ export const get_leaderboard = cache(async (leaderboard_id) => {
 });
 
 export const get_post = cache(async (post_id) => {
+    console.log(`DB READ | get_post | post_id: ${post_id}`)
     const post = await sql`SELECT * FROM posts WHERE id = ${post_id}`;
     if (post.rowCount === 0) {
         return null;
@@ -62,8 +70,9 @@ export const get_post = cache(async (post_id) => {
 });
 
 export const set_post = cache(async (post_id, data) => {
-    const post = await sql`SELECT * FROM posts WHERE id = ${post_id}`;
-    if (post.rowCount === 0) {
+    console.log(`DB WRITE | set_post | post_id: ${post_id}`)
+    const post = get_post(post_id);
+    if (post === null) {
         await sql`INSERT INTO posts (id, title, content, author, created_at, updated_at) VALUES (${data.id}, ${data.title}, ${data.content}, ${data.author}, ${data.created_at}, ${data.updated_at})`;
     } else {
         await sql`UPDATE posts SET title = ${data.title}, content = ${data.content}, author = ${data.author}, updated_at = ${data.updated_at} WHERE id = ${post_id}`;
@@ -71,6 +80,7 @@ export const set_post = cache(async (post_id, data) => {
 });
 
 export const get_all_posts = cache(async () => {
+    console.log(`DB READ | get_all_posts`)
     const posts = await sql`SELECT * FROM posts`;
     return posts.rows;
 });
