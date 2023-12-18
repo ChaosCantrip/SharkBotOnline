@@ -79,7 +79,7 @@ export const get_post = cache(async (post_id) => {
     }
 });
 
-export const set_post = cache(async (post_id, data) => {
+export async function set_post(post_id, data) {
     console.log(`DB WRITE | set_post | post_id: ${post_id}`)
     const post = get_post(post_id);
     if (post === null) {
@@ -87,7 +87,7 @@ export const set_post = cache(async (post_id, data) => {
     } else {
         await sql`UPDATE posts SET title = ${data.title}, content = ${data.content}, author = ${data.author}, updated_at = ${data.updated_at} WHERE id = ${post_id}`;
     }
-});
+}
 
 export const get_all_posts = cache(async () => {
     console.log(`DB READ | get_all_posts`)
