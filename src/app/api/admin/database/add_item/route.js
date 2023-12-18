@@ -1,20 +1,13 @@
 import {SharkResponse} from "@/app/api/SharkResponse";
-import { sql } from "@vercel/postgres";
+import {set_item} from "@lib/sharkbot";
 
 const required_fields = [
     "id",
     "name",
     "type",
     "description",
-    "icon_url",
-    "sellable",
     "collection_id",
-    "rarity",
     "index"
-]
-
-const optional_fields = [
-    "lootpool"
 ]
 
 export async function POST(request) {
@@ -39,13 +32,6 @@ export async function POST(request) {
         }, 400);
     }
 
-    const item = await sql`SELECT * FROM items WHERE id = ${data.id}`;
-    if (item.rowCount > 0) {
-        return SharkResponse({
-            error: "Item already exists."
-        }, 400);
-    }
-
     for (const field of required_fields) {
         if (data[field] === undefined) {
             return SharkResponse({
@@ -54,38 +40,8 @@ export async function POST(request) {
         }
     }
 
-    for (const field of optional_fields) {
-        if (!data[field]) {
-            data[field] = null;
-        }
-    }
-
     try {
-        const result = await sql`
-            INSERT INTO items (
-                id,
-                name,
-                type,
-                description,
-                icon_url,
-                sellable,
-                collection_id,
-                rarity,
-                index,
-                lootpool
-            ) VALUES (
-                ${data.id},
-                ${data.name},
-                ${data.type},
-                ${data.description},
-                ${data.icon_url},
-                ${data.sellable},
-                ${data.collection_id},
-                ${data.rarity},
-                ${data.index},
-                ${data.lootpool}
-            )
-        `;
+        await set_item(data.id, data);
         return SharkResponse({
             message: "Item added successfully."
         }, 201);
