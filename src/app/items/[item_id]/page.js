@@ -51,8 +51,6 @@ export default async function ItemPage({ params }) {
         notFound();
     }
 
-    const has_found_in = item.found_in.length > 0;
-
     return (
         <div className={article.wrapper}>
             <h1 className={article.title}>{item.name}<span className={styles.item_id}>{item.id}</span></h1>
@@ -60,23 +58,6 @@ export default async function ItemPage({ params }) {
                 <div className={styles.body}>
                     <div className={styles.main}>
                         <p className={styles.item_description}>{item.description}</p>
-                        { has_found_in ? (
-                            <div className={styles.found_in_wrapper}>
-                                <p>{item.name} can be found in:</p>
-                                <div className={styles.found_in}>
-                                    {item.found_in.map((lootbox) => (
-                                        <Link href={"/items/" + lootbox.id} key={lootbox.id}>
-                                            <div className={styles.found_in_item_wrapper}>
-                                                <img className={styles.found_in_item_icon} src={lootbox.icon_url} alt={""} />
-                                                <p className={styles.found_in_item_name}>{lootbox.name}</p>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : (
-                            <p className={styles.not_found_in}>{item.name} cannot be found in any lootboxes.</p>
-                        )}
                     </div>
                     <div className={styles.embed}>
                         <div className={styles.embed_top_wrapper}>
@@ -88,13 +69,13 @@ export default async function ItemPage({ params }) {
                             <p className={styles.item_value}>{item.type}</p>
                             <p className={styles.item_value}><span className={item.sellable ? styles.green : styles.red}>{item.sellable ? "Sellable" : "Not Sellable"}</span></p>
                             <p className={styles.item_value}>{item.xp_value}xp</p>
-                            <p className={styles.item_value}>${item.value}</p>
+                            <p className={styles.item_value}>${item.sharkcoin_value}</p>
                         </div>
                         <div className={styles.item_collection_wrapper}>
-                            <Link href={"/collections/" + item.collection.id}>
+                            <Link href={"/collections/" + item.collection_id}>
                                 <div className={styles.item_collection}>
-                                    <img className={styles.item_collection_icon} src={item.collection.icon_url} alt={""} />
-                                    <p className={styles.item_collection_name}>{item.collection.name} Collection</p>
+                                    <img className={styles.item_collection_icon} src={item.icon_url} alt={""} />
+                                    <p className={styles.item_collection_name}>{item.collection_name} Collection</p>
                                 </div>
                             </Link>
                         </div>
