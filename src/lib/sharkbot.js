@@ -5,7 +5,7 @@ import { cache } from "react";
 
 export async function get_item(item_id) {
     console.log(`DB READ | get_item | item_id: ${item_id}`)
-    const item = await sql`SELECT * FROM items WHERE id = ${item_id}`;
+    const item = await sql`SELECT items.id, items.name, items.type, items.description, items.collection_id, items.index, collections.name AS collection_name, collections.sharkcoin_value, collections.xp_value, collections.icon_url, item_types.sellable, item_types.consumable FROM items INNER JOIN collections ON items.collection_id = collections.id INNER JOIN item_types ON items.type = item_types.id WHERE items.id = ${item_id}`;
     if (item.rowCount === 0) {
         return null;
     } else {
@@ -21,7 +21,7 @@ export async function get_all_items() {
 
 export async function get_collection_items(collection_id) {
     console.log(`DB READ | get_collection_items | collection_id: ${collection_id}`)
-    const items = await sql`SELECT * FROM items WHERE collection_id = ${collection_id}`;
+    const items = await sql`SELECT items.id, items.name, items.type, items.description, items.collection_id, items.index, collections.name AS collection_name, collections.sharkcoin_value, collections.xp_value, collections.icon_url, item_types.sellable, item_types.consumable FROM items INNER JOIN collections ON items.collection_id = collections.id INNER JOIN item_types ON items.type = item_types.id WHERE items.collection_id = ${collection_id}`;
     return items.rows;
 }
 
