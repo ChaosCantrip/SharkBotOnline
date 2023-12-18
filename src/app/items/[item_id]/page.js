@@ -4,6 +4,19 @@ import {notFound} from "next/navigation";
 
 import styles from "./item.module.css";
 import Link from "next/link";
+import {sql} from "@vercel/postgres";
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    const item_ids = await sql`SELECT id FROM items`;
+
+    return item_ids.rows.map((item) => {
+        return {
+            item_id: item.id
+        }
+    })
+}
 
 export async function generateMetadata({ params }) {
     const item_id = params.item_id.toUpperCase();
@@ -28,7 +41,6 @@ export async function generateMetadata({ params }) {
             icon: item.icon_url
         }
     }
-
 }
 
 export default async function ItemPage({ params }) {
