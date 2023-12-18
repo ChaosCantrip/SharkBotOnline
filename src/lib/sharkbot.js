@@ -17,6 +17,16 @@ export const get_all_items = cache(async () => {
     return items.rows;
 });
 
+export async function set_item(item_id, data) {
+    console.log(`DB WRITE | set_item | item_id: ${item_id}`)
+    const item = get_item(item_id);
+    if (item === null) {
+        await sql`INSERT INTO items (id, name, type, description, icon_url, sellable, collection_id, rarity, index, lootpool) VALUES (${data.id}, ${data.name}, ${data.type}, ${data.description}, ${data.icon_url}, ${data.sellable}, ${data.collection_id}, ${data.rarity}, ${data.index}, ${data.lootpool})`;
+    } else {
+        await sql`UPDATE items SET name = ${data.name}, type = ${data.type}, description = ${data.description}, icon_url = ${data.icon_url}, sellable = ${data.sellable}, collection_id = ${data.collection_id}, rarity = ${data.rarity}, index = ${data.index}, lootpool = ${data.lootpool} WHERE id = ${item_id}`;
+    }
+}
+
 export const get_collection = cache(async (collection_id) => {
     console.log(`DB READ | get_collection | collection_id: ${collection_id}`)
     const collection = await sql`SELECT * FROM collections WHERE id = ${collection_id}`;
