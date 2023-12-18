@@ -53,6 +53,17 @@ export const get_all_collections = cache(async () => {
     return collections.rows;
 });
 
+export async function set_collection(collection_id, data) {
+    console.log(`DB WRITE | set_collection | collection_id: ${collection_id}`)
+    const collection = get_collection(collection_id);
+    if (collection === null) {
+        await sql`INSERT INTO collections (id, name, sharkcoin_value, xp_value, icon_url, index) VALUES (${data.id}, ${data.name}, ${data.sharkcoin_value}, ${data.xp_value}, ${data.icon_url}, ${data.index})`;
+    } else {
+        await sql`UPDATE collections SET name = ${data.name}, sharkcoin_value = ${data.sharkcoin_value}, xp_value = ${data.xp_value}, icon_url = ${data.icon_url}, index = ${data.index} WHERE id = ${collection_id}`;
+    }
+
+}
+
 /* ===== MEMBERS ===== */
 
 export const get_member = cache(async (member_id) => {
