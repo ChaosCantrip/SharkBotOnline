@@ -29,9 +29,9 @@ export async function set_item(item_id, data) {
     console.log(`DB WRITE | set_item | item_id: ${item_id}`)
     const item = get_item(item_id);
     if (item === null) {
-        await sql`INSERT INTO items (id, name, type, description, icon_url, sellable, collection_id, rarity, index, lootpool) VALUES (${data.id}, ${data.name}, ${data.type}, ${data.description}, ${data.icon_url}, ${data.sellable}, ${data.collection_id}, ${data.rarity}, ${data.index}, ${data.lootpool})`;
+        await sql`INSERT INTO items (id, name, type, description, collection_id, index) VALUES (${data.id}, ${data.name}, ${data.type}, ${data.description}, ${data.collection_id}, ${data.index})`;
     } else {
-        await sql`UPDATE items SET name = ${data.name}, type = ${data.type}, description = ${data.description}, icon_url = ${data.icon_url}, sellable = ${data.sellable}, collection_id = ${data.collection_id}, rarity = ${data.rarity}, index = ${data.index}, lootpool = ${data.lootpool} WHERE id = ${item_id}`;
+        await sql`UPDATE items SET name = ${data.name}, type = ${data.type}, description = ${data.description}, collection_id = ${data.collection_id}, index = ${data.index} WHERE id = ${item_id}`;
     }
 }
 
