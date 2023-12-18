@@ -2,7 +2,26 @@
 
 import {useEffect, useState} from "react";
 
-export default function ResultsTable({ results }){
+const columns_map = {
+    "id": {
+        "id": "index",
+        "name": "ID"
+    },
+    "name": {
+        "id": "name",
+        "name": "Name"
+    },
+    "description": {
+        "id": "description",
+        "name": "Description"
+    },
+    "type": {
+        "id": "type",
+        "name": "Type"
+    }
+}
+
+export default function ResultsTable({ results, columns }){
     const [sort, setSort] = useState("index");
     const [asc, setAsc] = useState(true);
     const [sortedResults, setSortedResults] = useState([...results]);
@@ -48,20 +67,28 @@ export default function ResultsTable({ results }){
             <table>
                 <thead>
                     <tr>
-                        <TableHeader id="index" active={sort === "index"}>
-                            ID
-                        </TableHeader>
-                        <TableHeader id="name" active={sort === "name"}>
-                            Name
-                        </TableHeader>
+                        {
+                            columns.map((column, index) => {
+                                return (
+                                    <TableHeader key={index} id={columns_map[column].id} active={sort === columns_map[column].id}>
+                                        {columns_map[column].name}
+                                    </TableHeader>
+                                )
+                            })
+                        }
                     </tr>
                 </thead>
                 <tbody>
                     {sortedResults.map((item, index) => {
                         return (
                             <tr key={index}>
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
+                                {columns.map((column, index) => {
+                                    return (
+                                        <td key={index}>
+                                            {item[column]}
+                                        </td>
+                                    )
+                                })}
                             </tr>
                         )
                     })}

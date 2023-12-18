@@ -5,7 +5,7 @@ import ResultsTable from "@components/ItemsTable/ResultsTable";
 import {useEffect, useState} from "react";
 
 
-export default function ItemsTable({ items, search_bar, filter_options }) {
+export default function ItemsTable({ items, search_bar, filter_options, columns }) {
     const [results, setResults] = useState([...items]);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function ItemsTable({ items, search_bar, filter_options }) {
     return (
         <div>
             <ItemsFilter items={items} setResults={setResults} search_bar={search_bar} filter_options={filter_options} />
-            <ResultsTable results={results} />
+            <ResultsTable results={results} columns={columns}/>
         </div>
     )
 }
