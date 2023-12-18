@@ -1,0 +1,23 @@
+.table_header {
+    background: var(--darker-grey);
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+}
+
+.table {
+    background: var(--dark-grey);
+}
+
+.item_row {
+    border-bottom: 2px solid var(--darker-grey);
+}
+
+.item_cell {
+    padding: 0.2rem 0.5rem;
+    background: var(--embed-grey);
+}
+
+.item_id {
+    text-align: center;
+    font-family: Consolas, monospace;
+}
