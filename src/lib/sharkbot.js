@@ -3,7 +3,7 @@ import { cache } from "react";
 
 /* ===== ITEMS ===== */
 
-export const get_item = cache(async (item_id) => {
+export async function get_item(item_id) {
     console.log(`DB READ | get_item | item_id: ${item_id}`)
     const item = await sql`SELECT * FROM items WHERE id = ${item_id}`;
     if (item.rowCount === 0) {
@@ -11,19 +11,19 @@ export const get_item = cache(async (item_id) => {
     } else {
         return item.rows[0];
     }
-});
+}
 
-export const get_all_items = cache(async () => {
+export async function get_all_items() {
     console.log(`DB READ | get_all_items`)
     const items = await sql`SELECT * FROM items`;
     return items.rows;
-});
+}
 
-export const get_collection_items = cache(async (collection_id) => {
+export async function get_collection_items(collection_id) {
     console.log(`DB READ | get_collection_items | collection_id: ${collection_id}`)
     const items = await sql`SELECT * FROM items WHERE collection_id = ${collection_id}`;
     return items.rows;
-});
+}
 
 export async function set_item(item_id, data) {
     console.log(`DB WRITE | set_item | item_id: ${item_id}`)
@@ -37,7 +37,7 @@ export async function set_item(item_id, data) {
 
 /* ===== COLLECTIONS ===== */
 
-export const get_collection = cache(async (collection_id) => {
+export async function get_collection(collection_id) {
     console.log(`DB READ | get_collection | collection_id: ${collection_id}`)
     const collection = await sql`SELECT * FROM collections WHERE id = ${collection_id}`;
     if (collection.rowCount === 0) {
@@ -45,13 +45,13 @@ export const get_collection = cache(async (collection_id) => {
     } else {
         return collection.rows[0];
     }
-});
+}
 
-export const get_all_collections = cache(async () => {
+export async function get_all_collections() {
     console.log(`DB READ | get_all_collections`)
     const collections = await sql`SELECT * FROM collections`;
     return collections.rows;
-});
+}
 
 export async function set_collection(collection_id, data) {
     console.log(`DB WRITE | set_collection | collection_id: ${collection_id}`)
@@ -66,7 +66,7 @@ export async function set_collection(collection_id, data) {
 
 /* ===== MEMBERS ===== */
 
-export const get_member = cache(async (member_id) => {
+export async function get_member(member_id) {
     console.log(`DB READ | get_member | member_id: ${member_id}`)
     const member = await sql`SELECT * FROM members WHERE id = ${member_id}`;
     if (member.rowCount === 0) {
@@ -74,11 +74,11 @@ export const get_member = cache(async (member_id) => {
     } else {
         return member.rows[0];
     }
-});
+}
 
 /* ===== LEADERBOARDS ===== */
 
-export const get_leaderboard = cache(async (leaderboard_id) => {
+export async function get_leaderboard(leaderboard_id) {
     console.log(`DB READ | get_leaderboard | leaderboard_id: ${leaderboard_id}`)
     const leaderboard = await sql`SELECT * FROM leaderboards WHERE id = ${leaderboard_id}`;
     if (leaderboard.rowCount === 0) {
@@ -86,11 +86,11 @@ export const get_leaderboard = cache(async (leaderboard_id) => {
     } else {
         return leaderboard.rows[0];
     }
-});
+}
 
 /* ===== POSTS ===== */
 
-export const get_post = cache(async (post_id) => {
+export async function get_post(post_id) {
     console.log(`DB READ | get_post | post_id: ${post_id}`)
     const post = await sql`SELECT * FROM posts WHERE id = ${post_id}`;
     if (post.rowCount === 0) {
@@ -98,7 +98,7 @@ export const get_post = cache(async (post_id) => {
     } else {
         return post.rows[0];
     }
-});
+}
 
 export async function set_post(post_id, data) {
     console.log(`DB WRITE | set_post | post_id: ${post_id}`)
@@ -110,8 +110,8 @@ export async function set_post(post_id, data) {
     }
 }
 
-export const get_all_posts = cache(async () => {
+export async function get_all_posts() {
     console.log(`DB READ | get_all_posts`)
     const posts = await sql`SELECT * FROM posts`;
     return posts.rows;
-});
+}
