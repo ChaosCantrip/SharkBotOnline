@@ -27,7 +27,7 @@ export async function get_collection_items(collection_id) {
 
 export async function set_item(item_id, data) {
     console.log(`DB WRITE | set_item | item_id: ${item_id}`)
-    const item = get_item(item_id);
+    const item = await get_item(item_id);
     if (item === null) {
         await sql`INSERT INTO items (id, name, type, description, collection_id, index) VALUES (${data.id}, ${data.name}, ${data.type}, ${data.description}, ${data.collection_id}, ${data.index})`;
     } else {
