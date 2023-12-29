@@ -35,6 +35,24 @@ export async function set_item(item_id, data) {
     }
 }
 
+/* ===== ITEM TYPES ===== */
+
+export async function get_item_type(item_type_id) {
+    console.log(`DB READ | get_item_type | item_type_id: ${item_type_id}`)
+    const item_type = await sql`SELECT * FROM item_types WHERE id = ${item_type_id}`;
+    if (item_type.rowCount === 0) {
+        return null;
+    } else {
+        return item_type.rows[0];
+    }
+}
+
+export async function get_all_item_types() {
+    console.log(`DB READ | get_all_item_types`)
+    const item_types = await sql`SELECT * FROM item_types`;
+    return item_types.rows;
+}
+
 /* ===== COLLECTIONS ===== */
 
 export async function get_collection(collection_id) {
